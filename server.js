@@ -258,6 +258,47 @@ app.delete('/api/trades/:id', (req, res) => {
     res.json({ success: true, message: 'Trade deleted.' });
 });
 
+// ==========================================
+// ADMIN ROUTES
+// ==========================================
+
+// Admin: Get all users
+app.get('/api/admin/users', (req, res) => {
+    const adminUser = req.headers['x-user'];
+    if (adminUser !== 'hit') {
+        return res.status(403).json({ error: 'Unauthorized. Admin access required.' });
+    }
+    
+    const db = readDb();
+    res.json(db.accounts);
+});
+
+// Admin: Delete user
+app.delete('/api/admin/users/:username', (req, res) => {
+    const adminUser = req.headers['x-user'];
+    if (adminUser !== 'hit') {
+        return res.status(403).json({ error: 'Unauthorized. Admin access required.' });
+    }
+    
+    const targetUser = req.params.username;
+    // Prevent admin from deleting themselves
+    if (targetUser === 'hit') {
+        return res.status(400).json({ error: 'Cannot delete the master admin account.' });
+    }
+    
+    const db = readDb();
+    
+    // Remove from accounts
+    db.accounts = db.accounts.filter(a => a.username !== targetUser);
+    
+    // Clean up settings and trades
+    delete db.settings[targetUser];
+    delete db.trades[targetUser];
+    
+    writeDb(db);
+    res.json({ success: true, message: `User ${targetUser} has been deleted.` });
+});
+
 // 10. Leaderboard: Get Top Traders
 app.get('/api/leaderboard', (req, res) => {
     const db = readDb();

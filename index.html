@@ -633,6 +633,13 @@
                             Top Traders
                         </a>
                     </li>
+                    <li class="nav-item" id="nav-admin" data-view="admin" style="display: none;">
+                        <a href="#admin" onclick="switchView('admin')">
+                            <!-- SVG Shield/Admin Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            Admin Panel
+                        </a>
+                    </li>
                     <li class="nav-item" data-view="settings">
                         <a href="#settings" onclick="switchView('settings')">
                             <!-- SVG Settings Icon -->
@@ -1229,6 +1236,34 @@
                     </div>
                 </div>
             </section>
+            <!-- ADMIN VIEW -->
+            <section id="admin-view" class="view-pane">
+                <div class="section-header">
+                    <h2 class="sec-title">Admin Control Panel</h2>
+                    <p class="sec-subtitle">Manage registered users, reset accounts, and monitor system access</p>
+                </div>
+                
+                <div class="glass-panel" style="margin-top: 12px; padding: 0; overflow: hidden; border-radius: 8px;">
+                    <div style="overflow-x: auto; width: 100%;">
+                        <table class="trades-table" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Initial Capital</th>
+                                    <th>Currency</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-users-tbody">
+                                <tr><td colspan="6" style="text-align:center; padding:20px;">Loading users...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
 
             <section id="settings-view" class="view-pane">
                 

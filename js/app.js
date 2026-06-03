@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateDatabaseStateUI();
             }
             
+            // Show admin link if user is hit
+            const adminLink = document.getElementById('nav-admin');
+            if (adminLink) {
+                adminLink.style.display = (activeUser === 'hit') ? 'flex' : 'none';
+            }
+            
             // Go to dashboard
             await switchView('dashboard');
         } else {
@@ -449,6 +455,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (viewName === 'csm') {
             initCurrencyStrengthMeter();
+        } else if (viewName === 'admin') {
+            window.loadAdminData();
         }
         
         if (viewName !== 'csm' && csmIntervalId) {
