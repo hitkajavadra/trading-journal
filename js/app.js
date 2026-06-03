@@ -2373,5 +2373,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initStackedCurrencyStrengthMeter();
 
+    // ==========================================
+    // ADMIN PANEL
+    // ==========================================
+    window.loadAdminData = async function() {
+        const tbody = document.getElementById('admin-users-tbody');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Loading users...</td></tr>';
+        
+        try {
+            const res = await fetch(`${window.API_BASE}/api/admin/users`, {
+                headers: { 'X-User': window.db.getActiveUser() }
+            });
+            
+            if (!res.ok) {
+                const err = await res.json();
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color: var(--danger);">${err.error || 'Failed to load users'}</td></tr>`;
+                return;
+            }
+            
+            const users = await res.json();
+            
+            if (users.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px;">No users found.</td></tr>`;
+                return;
+            }
+            
+            tbody.innerHTML = '';
+            users.forEach(u => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);">${u.username} ${u.username === 'hit' ? '<span style="color:var(--cyan);font-size:10px;margin-left:5px;">[ADMIN]</span>' : ''}</td>
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);">${u.email || '-'}</td>
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05); font-family:monospace; color:var(--text-secondary);">${u.password}</td>
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);">${u.currency || '$'} ${u.initialCapital}</td>
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);">${u.currency || 'USD'}</td>
+                    <td style="padding:12px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <button onclick="window.deleteUser('${u.username}')" class="btn-danger" style="padding:4px 8px; font-size:11px; border-radius:4px; border:none; cursor:pointer;" ${u.username === 'hit' ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch (e) {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:20px; color: var(--danger);">Network error: ${e.message}</td></tr>`;
+        }
+    };
+    
+    window.deleteUser = async function(username) {
+        if (!confirm(`Are you sure you want to completely delete user "${username}" and all their trades? This action cannot be undone.`)) {
+            return;
+        }
+        
+        try {
+            const res = await fetch(`${window.API_BASE}/api/admin/users/${username}`, {
+                method: 'DELETE',
+                headers: { 'X-User': window.db.getActiveUser() }
+            });
+            
+            const data = await res.json();
+            if (res.ok) {
+                showToast(`Success: ${data.message}`);
+                window.loadAdminData(); // Refresh table
+            } else {
+                showToast(`Error: ${data.error}`, true);
+            }
+        } catch (e) {
+            showToast(`Error: ${e.message}`, true);
+        }
+    };
+
     initUserSession();
 });
