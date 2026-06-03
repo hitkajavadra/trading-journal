@@ -1,0 +1,101 @@
+{
+  "accounts": [
+    {
+      "username": "hit",
+      "email": "hit@gmail.com",
+      "password": "hit@2006",
+      "initialCapital": 5000,
+      "currency": "USD"
+    }
+  ],
+  "settings": {
+    "Trader": {
+      "username": "Trader",
+      "initialCapital": 10000,
+      "currency": "USD",
+      "maxRiskPerTrade": 2,
+      "theme": "dark"
+    },
+    "hit": {
+      "username": "hit",
+      "initialCapital": 5000,
+      "currency": "USD",
+      "maxRiskPerTrade": 2,
+      "theme": "dark"
+    }
+  },
+  "trades": {
+    "Trader": [],
+    "hit": [
+      {
+        "id": "trade_7ebb7r7v6_1780407615802",
+        "username": "hit",
+        "symbol": "XAUUSD",
+        "direction": "LONG",
+        "entryPrice": 4508,
+        "exitPrice": 4520,
+        "quantity": 0.07999,
+        "fees": 0,
+        "stopLoss": 0,
+        "takeProfit": 0,
+        "strategy": "Breakout",
+        "emotion": "Anxious",
+        "mistake": "",
+        "notes": "",
+        "screenshot": "",
+        "date": "2026-06-02T13:38:00.000Z",
+        "isForex": true,
+        "pips": 120,
+        "grossPnL": 95.99,
+        "netPnL": 95.99,
+        "rrRatio": 0
+      },
+      {
+        "id": "trade_6xg87cko2_1780407761169",
+        "username": "hit",
+        "symbol": "XAUUSD",
+        "direction": "LONG",
+        "entryPrice": 4508,
+        "exitPrice": 4520,
+        "quantity": 0.05,
+        "fees": 0,
+        "stopLoss": 0,
+        "takeProfit": 0,
+        "strategy": "Support/Resistance",
+        "emotion": "Disciplined",
+        "mistake": "",
+        "notes": "",
+        "screenshot": "",
+        "date": "2026-06-02T13:42:00.000Z",
+        "isForex": true,
+        "pips": 120,
+        "grossPnL": 60,
+        "netPnL": 60,
+        "rrRatio": 0
+      },
+      {
+        "id": "trade_2w02u43tz_1780407803870",
+        "username": "hit",
+        "symbol": "XAUUSD",
+        "direction": "SHORT",
+        "entryPrice": 4510,
+        "exitPrice": 4513,
+        "quantity": 0.12,
+        "fees": 0,
+        "stopLoss": 0,
+        "takeProfit": 0,
+        "strategy": "Support/Resistance",
+        "emotion": "Disciplined",
+        "mistake": "",
+        "notes": "",
+        "screenshot": "",
+        "date": "2026-06-02T13:42:00.000Z",
+        "isForex": true,
+        "pips": -30,
+        "grossPnL": -36,
+        "netPnL": -36,
+        "rrRatio": 0
+      }
+    ]
+  }
+}
