@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Journal | Professional Trading Journal & Analytics</title>
+    <!-- CSS styles link -->
+    <link rel="stylesheet" href="css/style.css?v=1.0.2">
+    <link rel="stylesheet" href="css/landing.css?v=1.0.2">
+    <!-- Chart.js CDN for stunning visual data analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" crossorigin="anonymous"></script>
+    <!-- Three.js CDN and OrbitControls CDN for 3D Holographic metrics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Diagnostic Error Overlay -->
+    <script>
+        (function() {
+            function showError(title, desc) {
+                const overlay = document.createElement('div');
+                overlay.style.position = 'fixed';
+                overlay.style.top = '10px';
+                overlay.style.left = '10px';
+                overlay.style.right = '10px';
+                overlay.style.backgroundColor = 'rgba(239, 68, 68, 0.95)';
+                overlay.style.color = '#ffffff';
+                overlay.style.padding = '20px';
+                overlay.style.borderRadius = '12px';
+                overlay.style.zIndex = '999999';
+                overlay.style.fontFamily = 'monospace';
+                overlay.style.fontSize = '14px';
+                overlay.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
+                overlay.style.whiteSpace = 'pre-wrap';
+                overlay.innerHTML = '<h3 style="margin-top:0;font-size:16px;">❌ ' + title + '</h3><p style="margin:10px 0 0 0;">' + desc + '</p>';
+                document.body.appendChild(overlay);
+            }
+            window.onerror = function(msg, url, line, col, err) {
+                showError('JavaScript Runtime Error', msg + '\nFile: ' + url + '\nLine: ' + line + ' Col: ' + col + (err && err.stack ? '\n\nStack:\n' + err.stack : ''));
+                return false;
+            };
+            window.onunhandledrejection = function(event) {
+                showError('Unhandled Promise Rejection', event.reason);
+            };
+            window.addEventListener('error', function(event) {
+                if (event.target && (event.target.tagName === 'SCRIPT' || event.target.tagName === 'LINK')) {
+                    showError('Failed to Load Resource', 'Tag: ' + event.target.tagName + '\nURL: ' + (event.target.src || event.target.href));
+                }
+            }, true);
+        })();
+    </script>
+
+    <!-- STUNNING 3D LANDING HOMEPAGE, LOGIN, REGISTRATION VIEW -->
+    <div class="landing-view-wrapper" id="landing-container" style="display: none;">
+        <!-- Cybergrid 3D Background -->
+        <div class="grid-3d-bg">
+            <div class="grid-3d-plane"></div>
+        </div>
+        <!-- Particle Matrix Canvas -->
+        <canvas class="particles-canvas" id="landing-particles"></canvas>
+        
+        <!-- Neon Spotlight Auroras -->
+        <div class="aurora-glow-1"></div>
+        <div class="aurora-glow-2"></div>
+        
+        <!-- Floating Glass Navbar -->
+        <nav class="landing-nav">
+            <a href="#" class="landing-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-svg" style="margin-right:8px; color:var(--primary);"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path><polyline points="10 12 12.5 9.5 15 12 18 9"></polyline></svg>
+                <span class="landing-logo-text">TRADING JOURNAL</span>
+            </a>
+            <ul class="landing-nav-links">
+                <li class="landing-nav-link"><a href="#landing-hero-pane">Home</a></li>
+                <li class="landing-nav-link"><a href="#landing-snapshot-pane">Snapshot</a></li>
+                <li class="landing-nav-link"><a href="#landing-analytics-pane">Analytics</a></li>
+                <li class="landing-nav-link"><a href="#landing-bento-pane">Features</a></li>
+                <li class="landing-nav-link"><a href="#landing-reviews-pane">Reviews</a></li>
+                <li class="landing-nav-link"><a href="#landing-contact-pane">Contact Us</a></li>
+            </ul>
+            <div class="landing-nav-actions">
+                <button class="landing-btn-ghost" id="nav-signin-btn">Sign In</button>
+                <button class="landing-btn-glow" id="nav-getstarted-btn">Get Started</button>
+            </div>
+        </nav>
+        
+        <!-- SECTION 1: HERO SECTION -->
+        <section class="landing-hero" id="landing-hero-pane">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🛸</span> Space-Age Operational Cockpit
+                </div>
+                <h1 class="hero-title">Stop Guessing. Start Tracking.<br><span>Master Your Psychology</span></h1>
+                <p class="hero-description">
+                    A gorgeous, premium, multi-user trading journal powered by interactive 3D metrics, emotional analytics, and local sandbox security. Experience trading analytics like never before.
+                </p>
+                <div class="hero-cta">
+                    <button class="landing-btn-glow landing-btn-large" id="hero-getstarted-btn">Start Your Free Journal</button>
+                    <button class="landing-btn-ghost landing-btn-large" id="hero-features-btn" onclick="document.getElementById('landing-snapshot-pane').scrollIntoView({behavior: 'smooth'})">Launch App Demo</button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="cube-3d-visual-container" id="hero-3d-shape-tilt">
+                    <div class="cube-3d-visual">
+                        <div class="cube-face cube-front">TRADING JOURNAL</div>
+                        <div class="cube-face cube-back">TRADE</div>
+                        <div class="cube-face cube-right">LOG</div>
+                        <div class="cube-face cube-left">WIN</div>
+                        <div class="cube-face cube-top">▲</div>
+                        <div class="cube-face cube-bottom">▼</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMAND CENTER STATS PANEL (RESULTS) -->
+        <section class="landing-results-sec" id="landing-results-pane">
+            <div class="glass-panel results-stats-bar">
+                <div class="stat-col" id="stat-count-1">
+                    <div class="stat-number pnl-green">$4.2B+</div>
+                    <div class="stat-label">Account Capital Tracked</div>
+                </div>
+                <div class="stat-col" id="stat-count-2">
+                    <div class="stat-number" style="color: var(--violet);">89.4%</div>
+                    <div class="stat-label">Avg PnL Discipline Score</div>
+                </div>
+                <div class="stat-col" id="stat-count-3">
+                    <div class="stat-number" style="color: var(--cyan);">150K+</div>
+                    <div class="stat-label">Active Station Commanders</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE INTERACTIVE DASHBOARD PREVIEW ("THE SNAPSHOT") -->
+        <section class="landing-snapshot-sec" id="landing-snapshot-pane">
+            <div class="section-header-centered">
+                <div class="hero-badge"><span>📊</span> The Interface</div>
+                <h2 class="features-sec-title">The Analytical Terminal</h2>
+                <p class="hero-description" style="margin: 0 auto; text-align: center;">
+                    Take control with an advanced cockpit window presenting real-time telemetry, equity trajectories, and risk-management parameters.
+                </p>
+            </div>
+
+            <div class="mockup-dashboard-frame" id="mockup-frame-tilt">
+                <div class="mockup-top-bar">
+                    <div class="mockup-dots">
+                        <span class="m-dot red"></span>
+                        <span class="m-dot yellow"></span>
+                        <span class="m-dot green"></span>
+                    </div>
+                    <div class="mockup-tab">ASCEND STATION CORE</div>
+                </div>
+
+                <div class="mockup-dashboard-content">
+                    <!-- Top Summary Cards -->
+                    <div class="mockup-kpis">
+                        <div class="mockup-kpi-card pnl-green">
+                            <span class="m-kpi-label">NET PROFIT</span>
+                            <span class="m-kpi-val animate-number" data-target="4250">+$4,250.00</span>
+                            <span class="m-kpi-trend">▲ 24.8%</span>
+                        </div>
+                        <div class="mockup-kpi-card" style="color: var(--violet);">
+                            <span class="m-kpi-label">WIN RATE</span>
+                            <span class="m-kpi-val">68.0%</span>
+                            <span class="m-kpi-trend" style="color: var(--violet);">★ High Alpha</span>
+                        </div>
+                        <div class="mockup-kpi-card" style="color: var(--cyan);">
+                            <span class="m-kpi-label">PROFIT FACTOR</span>
+                            <span class="m-kpi-val">2.14</span>
+                            <span class="m-kpi-trend" style="color: var(--cyan);">✔ Optimum</span>
+                        </div>
+                    </div>
+
+                    <!-- Calendar & Equity curve split -->
+                    <div class="mockup-split-grid">
+                        <div class="mockup-split-left">
+                            <div class="mockup-card-title">Holographic Equity Curve</div>
+                            <div class="mockup-equity-chart">
+                                <svg viewBox="0 0 400 150" class="mockup-svg-curve">
+                                    <defs>
+                                        <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="rgba(16, 185, 129, 0.4)"/>
+                                            <stop offset="100%" stop-color="rgba(16, 185, 129, 0)"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M 0 130 Q 80 110, 150 90 T 300 40 T 400 20 L 400 150 L 0 150 Z" fill="url(#curveGrad)"></path>
+                                    <path d="M 0 130 Q 80 110, 150 90 T 300 40 T 400 20" fill="none" stroke="var(--primary)" stroke-width="3"></path>
+                                    <circle cx="150" cy="90" r="5" fill="var(--primary)" class="pulse-point"></circle>
+                                    <circle cx="300" cy="40" r="5" fill="var(--primary)" class="pulse-point"></circle>
+                                    <circle cx="400" cy="20" r="5" fill="var(--primary)" class="pulse-point"></circle>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="mockup-split-right">
+                            <div class="mockup-card-title">PnL Calendar Widget</div>
+                            <div class="mockup-calendar-grid">
+                                <span class="cal-day cal-profit">+$450</span>
+                                <span class="cal-day cal-profit">+$120</span>
+                                <span class="cal-day cal-loss">-$250</span>
+                                <span class="cal-day"></span>
+                                <span class="cal-day cal-profit">+$890</span>
+                                <span class="cal-day cal-loss">-$110</span>
+                                <span class="cal-day cal-profit">+$540</span>
+                                <span class="cal-day"></span>
+                                <span class="cal-day cal-profit">+$310</span>
+                                <span class="cal-day cal-loss">-$480</span>
+                                <span class="cal-day cal-profit">+$1250</span>
+                                <span class="cal-day"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE CHARTING & ANALYTICS DEEP-DIVE -->
+        <section class="landing-analytics-sec" id="landing-analytics-pane">
+            <div class="section-header-centered">
+                <div class="hero-badge" style="background: rgba(244, 63, 94, 0.1); border-color: rgba(244, 63, 94, 0.25); color: var(--pink);"><span>📉</span> Technical Precision</div>
+                <h2 class="features-sec-title">High-Fidelity Candlestick Audits</h2>
+                <p class="hero-description" style="margin: 0 auto; text-align: center;">
+                    Analyze exact execution parameters right on the chart. Drag screenshots of your charts and map trade indicators automatically.
+                </p>
+            </div>
+
+            <div class="mockup-chart-container" id="mockup-chart-tilt">
+                <div class="mockup-chart-split">
+                    <!-- Candlestick chart simulation -->
+                    <div class="chart-canvas-mock">
+                        <div class="mockup-chart-header">
+                            <span class="m-asset-title">BTCUSD <span class="pnl-green">4h 🟢 Live</span></span>
+                            <span class="m-asset-price">$98,420.00</span>
+                        </div>
+                        <div class="candlestick-rows">
+                            <!-- Draw styled candles -->
+                            <div class="candle candle-green" style="height: 120px; --wick-top: 10px; --wick-bottom: 140px;">
+                                <span class="candle-wick"></span>
+                                <span class="candle-body"></span>
+                            </div>
+                            <div class="candle candle-red" style="height: 100px; --wick-top: 20px; --wick-bottom: 110px;">
+                                <span class="candle-wick"></span>
+                                <span class="candle-body"></span>
+                            </div>
+                            <div class="candle candle-green" style="height: 160px; --wick-top: 5px; --wick-bottom: 170px;">
+                                <span class="candle-wick"></span>
+                                <span class="candle-body"></span>
+                                <!-- Entry Plot icon -->
+                                <span class="plot-icon plot-buy" style="top: 80px;">▲ BUY</span>
+                            </div>
+                            <div class="candle candle-green" style="height: 130px; --wick-top: 30px; --wick-bottom: 150px;">
+                                <span class="candle-wick"></span>
+                                <span class="candle-body"></span>
+                            </div>
+                            <div class="candle candle-red" style="height: 180px; --wick-top: 15px; --wick-bottom: 195px;">
+                                <span class="candle-wick"></span>
+                                <span class="candle-body"></span>
+                                <!-- Exit Plot icon -->
+                                <span class="plot-icon plot-sell" style="top: 20px;">▼ SELL</span>
+                            </div>
+                        </div>
+                        <!-- Glowing dotted path between execution coordinates -->
+                        <svg class="dotted-connection-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M 45 60 L 85 20" fill="none" stroke="var(--primary)" stroke-width="2" stroke-dasharray="4,4" class="animated-dash"></path>
+                        </svg>
+                    </div>
+
+                    <!-- Sidebar Trade Log Preview -->
+                    <div class="sidebar-log-mock">
+                        <div class="sidebar-header-mock">TRADE AUDIT PANEL</div>
+                        <div class="sidebar-row-mock">
+                            <span class="label-mock">Symbol:</span>
+                            <span class="val-mock"><strong>BTCUSD</strong></span>
+                        </div>
+                        <div class="sidebar-row-mock">
+                            <span class="label-mock">Strategy:</span>
+                            <span class="val-mock"><span class="pill-item">Breakout</span></span>
+                        </div>
+                        <div class="sidebar-row-mock">
+                            <span class="label-mock">Risk/Reward:</span>
+                            <span class="val-mock" style="color: var(--secondary);">1:3 Ratio</span>
+                        </div>
+                        <div class="sidebar-row-mock">
+                            <span class="label-mock">Emotion:</span>
+                            <span class="val-mock" style="color: var(--primary);">Disciplined</span>
+                        </div>
+                        <div class="screenshot-slot-mock">
+                            <span class="upload-ico">📁</span>
+                            <span class="upload-txt">Drag-and-Drop Market screenshot here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FEATURES & SUPPORT GRID ("THE BENTO ECOSYSTEM") -->
+        <section class="landing-bento-sec" id="landing-bento-pane">
+            <div class="section-header-centered">
+                <div class="hero-badge" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.25); color: var(--cyan);"><span>🚀</span> Dynamic Ecosystem</div>
+                <h2 class="features-sec-title">Engineered Bento Interface</h2>
+                <p class="hero-description" style="margin: 0 auto; text-align: center;">
+                    A seamless suite of trading tools and instant help stations built directly into your secure workspace browser database.
+                </p>
+            </div>
+
+            <div class="bento-grid-container">
+                <!-- Card 1: Automated Statistics -->
+                <div class="bento-card bento-w2 bento-h1" id="bento-c-1">
+                    <div class="bento-icon">📊</div>
+                    <div class="bento-content">
+                        <h3>Automated Mathematical Metrics</h3>
+                        <p>Turn raw trade logs into advanced performance analytics. Calculate profit factors, average drawdowns, and expectancy curves instantly.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Psychology Mistake Tracker Tag Cloud -->
+                <div class="bento-card bento-w1 bento-h2" id="bento-c-2">
+                    <div class="bento-icon">🧠</div>
+                    <div class="bento-content">
+                        <h3>Emotional Filter</h3>
+                        <p>Track your mental state. Isolate cognitive biases and filter out negative patterns like Revenge Trading or FOMO Entry.</p>
+                        <div class="tag-cloud-mock">
+                            <span class="tag-item tag-bad">FOMO</span>
+                            <span class="tag-item tag-good">Disciplined</span>
+                            <span class="tag-item tag-bad">Revenge Trade</span>
+                            <span class="tag-item tag-good">Patient</span>
+                            <span class="tag-item tag-bad">Over-Leverage</span>
+                            <span class="tag-item tag-good">Risk Managed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Multi-Market Support -->
+                <div class="bento-card bento-w1 bento-h1" id="bento-c-3">
+                    <div class="bento-icon">🛸</div>
+                    <div class="bento-content">
+                        <h3>Multi-Market Assets</h3>
+                        <p>Smooth 3D tracking support across major asset layers: Crypto, Forex, and Global Equity Indices.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Quantum Support Chat Interface -->
+                <div class="bento-card bento-w2 bento-h1" id="bento-c-4">
+                    <div class="bento-icon">💬</div>
+                    <div class="bento-content">
+                        <h3>Integrated Quantum Support Chat</h3>
+                        <p>Got a technical query or database issue? Receive instantaneous support solutions right in your cockpit.</p>
+                        <!-- Sleek Chat Thread Preview -->
+                        <div class="mockup-support-chat">
+                            <div class="chat-bubble user-bubble">
+                                <span>How do I import my custom trading CSV file into the local sandbox ledger?</span>
+                            </div>
+                            <div class="chat-bubble support-bubble">
+                                <span>▲ Ascend Officer: Simply launch the Settings pane, click "Database Import", and feed your CSV. It maps trade metrics automatically!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HAPPY CUSTOMERS / TESTIMONIALS SECTION -->
+        <section class="landing-reviews-sec" id="landing-reviews-pane">
+            <div class="section-header-centered">
+                <div class="hero-badge" style="background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.25); color: var(--secondary);"><span>★</span> Active Testimonials</div>
+                <h2 class="features-sec-title">Endorsed by Top Station Pilots</h2>
+                <p class="hero-description" style="margin: 0 auto; text-align: center;">
+                    See how professional commanders are leveling up their operational setups and mastering their psychological performance.
+                </p>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="glass-panel review-card" id="rev-card-1">
+                    <div class="rev-header">
+                        <div class="rev-avatar">👤</div>
+                        <div class="rev-details">
+                            <span class="rev-name">Commander Sarah K.</span>
+                            <span class="rev-rank">Crypto Quant Trader</span>
+                        </div>
+                        <span class="rev-stars">★★★★★</span>
+                    </div>
+                    <p class="rev-text">"Trading Journal completely changed how I look at my trading journal. The interactive 3D indicators and emotional filters let me identify my FOMO entry errors instantly. Highly recommended!"</p>
+                </div>
+                <div class="glass-panel review-card" id="rev-card-2">
+                    <div class="rev-header">
+                        <div class="rev-avatar">👤</div>
+                        <div class="rev-details">
+                            <span class="rev-name">Pilot James L.</span>
+                            <span class="rev-rank">Forex Breakout Specialist</span>
+                        </div>
+                        <span class="rev-stars">★★★★★</span>
+                    </div>
+                    <p class="rev-text">"The dashboard's 3D Autopilot is spectacular, but the actual PnL calendars and local database encryption are the true core. Zero lags, fully client-side security."</p>
+                </div>
+                <div class="glass-panel review-card" id="rev-card-3">
+                    <div class="rev-header">
+                        <div class="rev-avatar">👤</div>
+                        <div class="rev-details">
+                            <span class="rev-name">Commander Dave R.</span>
+                            <span class="rev-rank">Equity Portfolio Manager</span>
+                        </div>
+                        <span class="rev-stars">★★★★★</span>
+                    </div>
+                    <p class="rev-text">"Outstanding glassmorphism layout and smooth gradient tracking charts! The bento grid design makes accessing custom CSV data metrics a breeze. The 24/7 Quantum Support is excellent!"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CONTACT SPACEPORT MODULE (CONTACT US) -->
+        <section class="landing-contact-sec" id="landing-contact-pane">
+            <div class="section-header-centered">
+                <div class="hero-badge" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.25); color: var(--primary);"><span>📡</span> Subspace Signals</div>
+                <h2 class="features-sec-title">Transmit Subspace Signal</h2>
+                <p class="hero-description" style="margin: 0 auto; text-align: center;">
+                    Need assistance or custom operational licensing? Signal our orbital crew coordinates. We reply within one solar rotation!
+                </p>
+            </div>
+
+            <div class="glass-panel contact-form-card" id="contact-panel-tilt">
+                <form class="contact-spaceport-form" id="homepage-contact-form">
+                    <div class="contact-input-grid">
+                        <div class="contact-input-group">
+                            <label for="contact-name">Pilot Signature</label>
+                            <input type="text" class="contact-input" id="contact-name" placeholder="e.g. Commander Alpha" required>
+                        </div>
+                        <div class="contact-input-group">
+                            <label for="contact-email">Subspace Freq (Email)</label>
+                            <input type="email" class="contact-input" id="contact-email" placeholder="e.g. alpha@station.net" required>
+                        </div>
+                    </div>
+                    <div class="contact-input-group" style="margin-top: 16px;">
+                        <label for="contact-subject">Signal Header (Subject)</label>
+                        <input type="text" class="contact-input" id="contact-subject" placeholder="e.g. Inquire about quant tools" required>
+                    </div>
+                    <div class="contact-input-group" style="margin-top: 16px;">
+                        <label for="contact-message">Subspace Telemetry Payload (Message)</label>
+                        <textarea class="contact-input" id="contact-message" rows="5" placeholder="Enter message coordinates..." required></textarea>
+                    </div>
+                    <button type="submit" class="landing-btn-glow" style="margin-top: 24px; width: 100%; height: 50px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em;">Transmit Telemetry Signal</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 6: THE FINAL CTA & FOOTER -->
+        <footer class="landing-footer">
+            <div class="footer-3d-perspective">
+                <div class="footer-grid-floor"></div>
+            </div>
+            
+            <div class="footer-content">
+                <h2 class="footer-title">Ready to treat trading like a real business?</h2>
+                <p class="footer-subtitle">Deploy your secure local database and master your psychology today.</p>
+                <button class="landing-btn-glow landing-btn-large" id="footer-getstarted-btn" style="margin-top: 8px;">Launch Ascend Station Now</button>
+                
+                <div class="footer-bottom-links">
+                    <span>© 2026 ASCEND STATION. All logs cryptographically isolated client-side.</span>
+                    <div class="footer-socials">
+                        <a href="#">Orbit Signal</a>
+                        <a href="#">Flight Manual</a>
+                        <a href="#">Secured Protocols</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- 3D FLIP AUTH SEPARATE VIEW WRAPPER -->
+    <div class="auth-view-wrapper" id="auth-container" style="display: none; background-color: #030712; min-height: 100vh; position: relative; z-index: 10;">
+        <!-- Cybergrid 3D Background inside auth -->
+        <div class="grid-3d-bg">
+            <div class="grid-3d-plane"></div>
+        </div>
+        <div class="aurora-glow-1"></div>
+        <div class="aurora-glow-2"></div>
+        
+        <div class="auth-3d-wrapper">
+            <!-- Legacy database migration info panel -->
+            <div class="auth-info-panel" id="migration-info-box" style="display: none;">
+                <span style="font-size: 16px; margin-right: 6px;">🎉</span>
+                <strong>Legacy Data Migrated!</strong><br>
+                All your old trading records were moved to local account <strong>Trader</strong>.<br>
+                Use password <strong>trader123</strong> to log in.
+            </div>
+            
+            <div class="auth-3d-card" id="auth-flip-card">
+                
+                <!-- FRONT: LOGIN FORM -->
+                <div class="auth-side auth-front">
+                    <div class="auth-header">
+                        <h2 class="auth-title">Welcome Commander</h2>
+                        <p class="auth-subtitle">Establish local authentication channel</p>
+                    </div>
+                    
+                    <div class="auth-alert-panel" id="login-error-alert"></div>
+                    
+                    <form class="auth-form" id="login-form" autocomplete="off">
+                        <div class="auth-input-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" class="auth-input" id="login-email" placeholder="e.g. pilot@space.com" required>
+                        </div>
+                        
+                        <div class="auth-input-group">
+                            <label for="login-password">Private Password</label>
+                            <input type="password" class="auth-input" id="login-password" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="landing-btn-glow" style="margin-top: 12px; height: 46px; font-size: 14px;">Establish Station Access</button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p class="auth-footer-text" style="margin-bottom: 12px;">
+                            New pilot? 
+                            <button type="button" class="auth-footer-link" id="flip-to-register-btn">Deploy New Profile</button>
+                        </p>
+                        <button type="button" class="auth-footer-link" id="back-to-landing-btn-1" style="font-size: 11px; color: #64748b;">← Return to Spaceport</button>
+                    </div>
+                </div>
+                
+                <!-- BACK: REGISTRATION FORM -->
+                <div class="auth-side auth-back">
+                    <div class="auth-header">
+                        <h2 class="auth-title">Deploy Profile</h2>
+                        <p class="auth-subtitle">Initialize a new local sandbox database</p>
+                    </div>
+                    
+                    <div class="auth-alert-panel" id="register-error-alert"></div>
+                    
+                    <form class="auth-form" id="register-form" autocomplete="off">
+                        <div class="auth-input-group">
+                            <label for="register-username">Trader Name</label>
+                            <input type="text" class="auth-input" id="register-username" placeholder="Alphanumeric, min 3 letters" required>
+                        </div>
+                        
+                        <div class="auth-input-group">
+                            <label for="register-email">Email Address</label>
+                            <input type="email" class="auth-input" id="register-email" placeholder="pilot@space.com" required>
+                        </div>
+                        
+                        <div class="auth-input-group">
+                            <label for="register-password">Private Password</label>
+                            <input type="password" class="auth-input" id="register-password" placeholder="••••••••" required>
+                        </div>
+                        
+                        <div class="auth-input-group" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 12px;">
+                            <div>
+                                <label for="register-capital">Starting Capital (Optional)</label>
+                                <input type="number" class="auth-input" id="register-capital" placeholder="e.g. 10000" min="0">
+                            </div>
+                            <div>
+                                <label for="register-currency">Ledger Currency</label>
+                                <select class="auth-input" id="register-currency" style="padding: 10.5px;">
+                                    <option value="USD">USD ($)</option>
+                                    <option value="INR">INR (₹)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="landing-btn-glow" style="margin-top: 12px; height: 46px; font-size: 14px;">Establish Local Ledger</button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p class="auth-footer-text" style="margin-bottom: 12px;">
+                            Already registered? 
+                            <button type="button" class="auth-footer-link" id="flip-to-login-btn">Secure Connection</button>
+                        </p>
+                        <button type="button" class="auth-footer-link" id="back-to-landing-btn-2" style="font-size: 11px; color: #64748b;">← Return to Spaceport</button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="app-sidebar">
+            <div>
+                <div class="logo-section">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-svg" style="margin-right:8px; color:var(--primary);"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path><polyline points="10 12 12.5 9.5 15 12 18 9"></polyline></svg>
+                    <span class="logo-text">TRADING JOURNAL</span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li class="nav-item active" data-view="dashboard">
+                        <a href="#dashboard" onclick="switchView('dashboard')">
+                            <!-- SVG Dashboard Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="calendar">
+                        <a href="#calendar" onclick="switchView('calendar')">
+                            <!-- SVG Calendar Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            PnL Calendar
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="reports">
+                        <a href="#reports" onclick="switchView('reports')">
+                            <!-- SVG Reports Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                            Deep-Dive Reports
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="forex">
+                        <a href="#forex" onclick="switchView('forex')">
+                            <!-- SVG Dollar Sign Icon representing forex assets -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Forex Technical
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="csm">
+                        <a href="#csm" onclick="switchView('csm')">
+                            <!-- SVG Activity/Meter Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            Currency Strength
+                        </a>
+                    </li>
+                    <li class="nav-item external-link">
+                        <a href="https://www.forexfactory.com/calendar?day=today" target="_blank" rel="noopener noreferrer">
+                            <!-- SVG Globe/News Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            Daily News <svg width="12" height="12" style="margin-left:auto; opacity:0.6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="leaderboard">
+                        <a href="#leaderboard" onclick="switchView('leaderboard')">
+                            <!-- SVG Trophy Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10M5 4h14v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4z"></path><path d="M5 4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2"></path><path d="M19 4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2"></path></svg>
+                            Top Traders
+                        </a>
+                    </li>
+                    <li class="nav-item" data-view="settings">
+                        <a href="#settings" onclick="switchView('settings')">
+                            <!-- SVG Settings Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            Settings
+                        </a>
+                    </li>
+                    <li class="nav-item logout-item" id="sidebar-logout-btn">
+                        <a href="#logout">
+                            <!-- SVG Log Out Icon -->
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                            Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button class="btn-primary" style="width: 100%;" id="sidebar-new-trade-btn">
+                    <span>+ Log Trade</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Display Pane -->
+        <main class="main-content">
+            
+            <!-- Top Header Control Bar -->
+            <header class="top-header">
+                <button class="menu-btn" id="menu-toggle-btn">☰</button>
+                <div class="welcome-msg">
+                    <h1 id="header-user-welcome">Welcome back, Trader</h1>
+                    <p id="header-current-date">Friday, May 22, 2026</p>
+                </div>
+                
+                <div class="header-controls">
+                    <!-- Glowing 3D Hologram Button -->
+                    <button class="icon-btn glow-btn-hologram" id="hologram-toggle" title="Toggle Holographic 3D Viewport" style="border-radius: var(--border-radius-sm); font-size: 11px; font-weight: 700; width: auto; padding: 0 14px; gap: 6px; border-color: rgba(6, 182, 212, 0.25); display: flex; align-items: center; color: var(--cyan); margin-right: 8px;">
+                        <span>🔮</span> <span>3D HOLOGRAM</span>
+                    </button>
+
+                    <!-- Glowing 3D Autopilot Button -->
+                    <button class="icon-btn glow-btn-autopilot" id="autopilot-toggle" title="Toggle Cinematic 3D Autopilot Mode" style="border-radius: var(--border-radius-sm); font-size: 11px; font-weight: 700; width: auto; padding: 0 14px; gap: 6px; border-color: rgba(16, 185, 129, 0.25); display: flex; align-items: center; color: var(--primary);">
+                        <span>🛰️</span> <span>AUTOPILOT</span>
+                    </button>
+
+                    <!-- Database Connection Status Pill -->
+                    <div class="db-status-pill db-indexeddb" id="db-status-pill" title="Active database storage engine configuration">
+                        🔵 IndexedDB Sandbox
+                    </div>
+
+                    <div class="capital-badge">
+                        <div>
+                            <div class="capital-label">Balance</div>
+                            <div class="capital-value" id="header-capital-value">$10,000.00</div>
+                        </div>
+                    </div>
+                    
+                    <button class="icon-btn" id="theme-toggle" title="Toggle Light/Dark Theme">
+                        <!-- Theme Toggle Sun/Moon Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="theme-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- VIEW 1: ANALYTICAL DASHBOARD -->
+            <section id="dashboard-view" class="view-pane active">
+                
+                <!-- HUD Telemetry Ambient elements and stars behind dashboard -->
+                <div class="hud-telemetry-overlay">
+                    <div class="hud-corner top-left"></div>
+                    <div class="hud-corner top-right"></div>
+                    <div class="hud-corner bottom-left"></div>
+                    <div class="hud-corner bottom-right"></div>
+                    <div class="hud-label-left">STATION LOGS SYNC: SECURED [100%]</div>
+                    <div class="hud-label-right">COCKPIT LATENCY: 8ms</div>
+                </div>
+
+                <div class="dashboard-canvas-container" style="position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:-1; opacity:0.12;">
+                    <canvas id="dashboard-particles" style="width:100%; height:100%;"></canvas>
+                </div>
+
+                <!-- 3D Hologram Viewport -->
+                <div id="dashboard-3d-viewport" style="display: none; position: relative; width: 100%; height: calc(100vh - 180px); min-height: 550px; border-radius: var(--border-radius-md); overflow: hidden; margin-bottom: 24px; border: 1px solid rgba(6, 182, 212, 0.15);">
+                    <canvas id="hologram-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                    <div id="hologram-tooltip" style="display: none; position: absolute; pointer-events: none; z-index: 1000;"></div>
+                    
+                    <!-- Interactive overlays for cockpit feel -->
+                    <div class="hologram-hud-overlay" style="position: absolute; top: 16px; left: 16px; pointer-events: none; font-family: 'Courier New', Courier, monospace; font-size: 11px; color: var(--cyan); text-shadow: 0 0 5px rgba(6,182,212,0.4); line-height: 1.6;">
+                        <div style="font-weight: bold; font-size: 13px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <span class="hud-pulse" style="width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--cyan);"></span>
+                            TACTICAL 3D TELEMETRY SYNC
+                        </div>
+                        <div>GRID CALIBRATION: ACTIVE [P&L Mesh Z-axis Elevate]</div>
+                        <div>EQUITY splinetube VER: 4.1a</div>
+                        <div>ORBIT CONTROLS: CONNECTED</div>
+                    </div>
+                    <div class="hologram-hud-instructions" style="position: absolute; bottom: 16px; left: 16px; pointer-events: none; font-family: 'Courier New', Courier, monospace; font-size: 11px; color: rgba(255, 255, 255, 0.45); line-height: 1.5; background: rgba(8, 12, 20, 0.6); padding: 8px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(4px);">
+                        <div>🖱️ Click + Drag: Orbit Camera View</div>
+                        <div>🖱️ Scroll: Zoom Grid / Orbit Plane</div>
+                        <div>🖱️ Hover Blocks/Cylinders: Query Database telemetry</div>
+                        <div>🖱️ Click Support Orb: Pan cockpit support signal</div>
+                    </div>
+                </div>
+
+                <div id="dashboard-2d-content">
+                    <!-- KPIs row -->
+                    <div class="dashboard-kpis">
+                        <div class="glass-panel kpi-card pnl-plus" id="kpi-net-pnl-card">
+                            <div class="kpi-glass-shimmer"></div>
+                            <div class="kpi-card-content">
+                                <div class="kpi-title">Net Profit / Loss</div>
+                                <div class="kpi-value pnl-green" id="kpi-net-pnl">$0.00</div>
+                                <div class="kpi-trend trend-up" id="kpi-pnl-trend">
+                                    <span>▲</span> Starting Capital Base
+                                </div>
+                            </div>
+                            <div class="kpi-icon-glow">
+                                <!-- SVG Rocket representing profit/loss trajectory -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.25-2.5 3.5-2.5 3.5s2.25-1 3.5-2.5M16.5 7.5L21 3M12 12l-6 6M18 3.993C18 3.993 16 3 12 3c-4 0-6 4-6 4s-2.4 3.6-1.6 8.1c.8 4.5 4 8.1 7.6 9 3.6-.9 6.8-4.5 7.6-9 .8-4.5-1.6-8.1-1.6-8.1z"></path></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel kpi-card winrate">
+                            <div class="kpi-glass-shimmer"></div>
+                            <div class="kpi-card-content">
+                                <div class="kpi-title">Win Rate</div>
+                                <div class="kpi-value" id="kpi-winrate">0.0%</div>
+                                <div class="kpi-trend" id="kpi-winrate-trend">
+                                    <span>0 winning / 0 total</span>
+                                </div>
+                            </div>
+                            <div class="kpi-icon-glow">
+                                <!-- SVG Target Bullseye representing win rate accuracy -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel kpi-card profitfactor">
+                            <div class="kpi-glass-shimmer"></div>
+                            <div class="kpi-card-content">
+                                <div class="kpi-title">Profit Factor</div>
+                                <div class="kpi-value" id="kpi-profitfactor">0.00</div>
+                                <div class="kpi-trend trend-neutral" id="kpi-pf-trend">
+                                    Gross Win / Gross Loss
+                                </div>
+                            </div>
+                            <div class="kpi-icon-glow">
+                                <!-- SVG Scales of Growth / Lightning -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel kpi-card totaltrades">
+                            <div class="kpi-glass-shimmer"></div>
+                            <div class="kpi-card-content">
+                                <div class="kpi-title">Total Trades</div>
+                                <div class="kpi-value" id="kpi-total-trades">0</div>
+                                <div class="kpi-trend trend-neutral" id="kpi-trades-trend">
+                                    Logged executions
+                                </div>
+                            </div>
+                            <div class="kpi-icon-glow">
+                                <!-- SVG Ledger Logs DB Nodes -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M10 6.5h4M10 17.5h4M6.5 10v4M17.5 10v4"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graphs and visual curves section -->
+                    <div class="chart-grid">
+                        <div class="glass-panel chart-card">
+                            <div class="chart-header">
+                                <span class="chart-title">Equity Growth Curve</span>
+                                <span class="text-muted" style="font-size: 12px;" id="equity-starting-balance">Initial: $10,000.00</span>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="equityCurveChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-panel chart-card" style="padding: 24px; justify-content: space-between;">
+                            <h3 class="chart-title" style="margin-bottom: 16px;">Stat Breakdown</h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 16px; flex-grow: 1; justify-content: center;">
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 8px;">
+                                    <span class="text-secondary">Average Win</span>
+                                    <span id="stat-avg-win" class="pnl-green">$0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 8px;">
+                                    <span class="text-secondary">Average Loss</span>
+                                    <span id="stat-avg-loss" class="pnl-red">$0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 8px;">
+                                    <span class="text-secondary">Avg Win/Loss Ratio</span>
+                                    <span id="stat-winloss-ratio">0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border-color); padding-bottom: 8px;">
+                                    <span class="text-secondary">Largest Win</span>
+                                    <span id="stat-largest-win" class="pnl-green">$0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding-bottom: 8px;">
+                                    <span class="text-secondary">Largest Loss</span>
+                                    <span id="stat-largest-loss" class="pnl-red">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Trade Level Analysis Card -->
+                    <div class="glass-panel chart-card" id="dashboard-trade-visualizer-card" style="display: none; margin-bottom: 24px; padding: 20px;">
+                        <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <span class="chart-title" style="font-size: 15px; font-weight: bold; color: var(--cyan); display: flex; align-items: center; gap: 8px;">
+                                <span>📈</span> Execution Level Analysis
+                            </span>
+                            <span class="text-muted" style="font-size: 12px; font-family: monospace; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px;" id="dash-visualizer-symbol">N/A</span>
+                        </div>
+                        <div style="position: relative; width: 100%; height: 260px; border-radius: 8px; background: rgba(8,12,20,0.4); border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+                            <canvas id="dashboard-trade-visualizer-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; text-align: center; font-size: 11px; color: var(--text-secondary);">
+                            💡 Click any row in the "Recent Trade Logs" table below to inspect its execution level on the chart.
+                        </div>
+                    </div>
+                    <!-- ORBITAL LIVE CHARTING TERMINAL CARD -->
+                    <div class="glass-panel live-chart-card" id="dashboard-live-chart-card" style="margin-bottom: 24px;">
+                        <div class="live-chart-header">
+                            <div class="live-chart-title">
+                                <span class="pulse-dot"></span>
+                                <span>ORBITAL LIVE CHART TERMINAL</span>
+                            </div>
+                            <div class="live-chart-controls">
+                                <select class="live-chart-ticker-selector" id="dashboard-chart-ticker">
+                                    <option value="EURUSD">EURUSD (Euro / US Dollar)</option>
+                                    <option value="GBPUSD">GBPUSD (British Pound / US Dollar)</option>
+                                    <option value="USDJPY">USDJPY (US Dollar / Japanese Yen)</option>
+                                    <option value="XAUUSD">XAUUSD (Gold Spot / US Dollar)</option>
+                                    <option value="BTCUSD" selected>BTCUSD (Bitcoin / US Dollar)</option>
+                                    <option value="ETHUSD">ETHUSD (Ethereum / US Dollar)</option>
+                                </select>
+                                <div class="live-chart-timeframe-group" id="dashboard-chart-timeframes">
+                                    <button class="live-chart-tf-btn" data-tf="5">5m</button>
+                                    <button class="live-chart-tf-btn" data-tf="15">15m</button>
+                                    <button class="live-chart-tf-btn active" data-tf="60">1h</button>
+                                    <button class="live-chart-tf-btn" data-tf="240">4h</button>
+                                    <button class="live-chart-tf-btn" data-tf="D">1D</button>
+                                </div>
+                                <button class="live-chart-fullscreen-btn" id="dashboard-chart-fullscreen" type="button" title="Full Screen Cockpit Mode" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); color:var(--text-secondary); width:32px; height:32px; border-radius:6px; font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s;">⛶</button>
+                            </div>
+                        </div>
+                        
+                        <div class="live-chart-split-grid">
+                            <div class="live-chart-viewport-left">
+                                <div class="live-chart-viewport-wrapper">
+                                    <!-- Glowing Spinner loading indicator -->
+                                    <div class="live-chart-loading-overlay" id="dashboard-chart-loader">
+                                        <div class="live-chart-spinner"></div>
+                                        <div class="live-chart-loading-text">CALIBRATING SIGNAL TELEMETRY FEED...</div>
+                                    </div>
+                                    <!-- Embed placeholder for TradingView advanced iframe widget -->
+                                    <div id="dashboard-tradingview-widget" style="width: 100%; height: 100%;"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sleek glowing sidebar overlay -->
+                            <div class="live-chart-telemetry-right">
+                                <div class="live-hud-panel">
+                                    <div class="live-hud-header">
+                                        <span class="live-hud-badge">TELEMETRY DECK</span>
+                                        <span class="live-hud-status" id="live-hud-status-mode">STANDBY</span>
+                                    </div>
+                                    
+                                    <!-- Live price ticking HUD displays -->
+                                    <div class="live-hud-price-container">
+                                        <div class="live-hud-price-label">LIVE PRICE FEED</div>
+                                        <div class="live-hud-price-value" id="live-hud-ticking-price">---.--</div>
+                                        <div class="live-hud-price-pnl" id="live-hud-floating-pnl">STANDBY MODE</div>
+                                    </div>
+                                    
+                                    <!-- Level capsules -->
+                                    <div class="live-hud-levels-box">
+                                        <div class="hud-level-row level-tp">
+                                            <span class="hud-lbl">TAKE PROFIT (TP)</span>
+                                            <span class="hud-val" id="hud-val-tp">---.--</span>
+                                        </div>
+                                        <div class="hud-level-row level-entry">
+                                            <span class="hud-lbl">ENTRY PRICE (ENT)</span>
+                                            <span class="hud-val" id="hud-val-entry">---.--</span>
+                                        </div>
+                                        <div class="hud-level-row level-sl">
+                                            <span class="hud-lbl">STOP LOSS (SL)</span>
+                                            <span class="hud-val" id="hud-val-sl">---.--</span>
+                                        </div>
+                                        <div class="hud-level-row level-exit" id="hud-level-row-exit" style="display: none;">
+                                            <span class="hud-lbl">EXIT PRICE (EXT)</span>
+                                            <span class="hud-val" id="hud-val-exit">---.--</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Visual mini-chart canvas -->
+                                    <div class="live-hud-canvas-container">
+                                        <canvas id="live-chart-hud-canvas" width="280" height="240"></canvas>
+                                    </div>
+                                    
+                                    <div class="live-hud-footer" id="live-hud-info-tips">
+                                        💡 Engage a live position via CLI `/buy` or `/sell` commands, or click any database row in the Recent Trades Table below.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Table logs -->
+                    <div class="section-header">
+                        <h2 class="section-title">Recent Trade Logs</h2>
+                        <button class="btn-secondary" id="dash-log-trade-btn">+ Log New Trade</button>
+                    </div>
+                    
+                    <div class="glass-panel trades-table-card">
+                        <table class="trades-table" id="recent-trades-table">
+                            <thead>
+                                <tr>
+                                    <th>Date/Time</th>
+                                    <th>Symbol</th>
+                                    <th>Direction</th>
+                                    <th>Entry</th>
+                                    <th>Exit</th>
+                                    <th>Size</th>
+                                    <th>Net PnL</th>
+                                    <th>Strategy</th>
+                                    <th>Emotion</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-trades-body">
+                                <!-- Populated dynamically via JS -->
+                            </tbody>
+                        </table>
+                        <div id="no-trades-alert" style="text-align: center; padding: 40px; color: var(--text-secondary); display: none;">
+                            No trades logged yet. Click "+ Log Trade" to start your journal!
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- VIEW 2: INTERACTIVE PNL CALENDAR -->
+            <section id="calendar-view" class="view-pane">
+                <div class="calendar-view">
+                    
+                    <div class="calendar-filters">
+                        <span class="calendar-month-year" id="calendar-month-title">May 2026</span>
+                        <div class="month-selectors">
+                            <button class="icon-btn" id="prev-month-btn">◀</button>
+                            <button class="icon-btn" id="next-month-btn">▶</button>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel" style="padding: 24px;">
+                        <div class="calendar-grid-header">
+                            <div>SUN</div>
+                            <div>MON</div>
+                            <div>TUE</div>
+                            <div>WED</div>
+                            <div>THU</div>
+                            <div>FRI</div>
+                            <div>SAT</div>
+                        </div>
+                        <div class="calendar-grid" id="calendar-days-container">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Daily Trades Details Drawer -->
+                    <div class="glass-panel" id="calendar-details-panel" style="padding: 24px; display: none;">
+                        <h3 id="calendar-details-date" style="margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">Trades on Friday, May 22, 2026</h3>
+                        <table class="trades-table" id="calendar-details-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Direction</th>
+                                    <th>Entry</th>
+                                    <th>Exit</th>
+                                    <th>Size</th>
+                                    <th>Net PnL</th>
+                                    <th>Strategy</th>
+                                    <th>Emotion</th>
+                                </tr>
+                            </thead>
+                            <tbody id="calendar-details-body">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- VIEW 3: REPORTS & STREAKS ANALYTICS -->
+            <section id="reports-view" class="view-pane">
+                
+                <!-- Timeframe Selection Bar -->
+                <div class="reports-header-pane" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+                    <div>
+                        <h2 class="section-title" style="margin: 0;">Performance Deep-Dive</h2>
+                        <p class="text-secondary" style="font-size: 11px; margin: 4px 0 0 0; color: var(--text-muted);">Isolate your psychometrics and strategy curves by execution timeframes</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div class="timeframe-selector" id="reports-timeframe-selector" style="display: flex; gap: 8px; background: rgba(255,255,255,0.02); padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);">
+                            <button class="timeframe-btn active" data-timeframe="all" style="background: var(--primary); color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.05em;">All Time</button>
+                            <button class="timeframe-btn" data-timeframe="daily" style="background: transparent; color: var(--text-secondary); border: none; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.05em;">Daily</button>
+                            <button class="timeframe-btn" data-timeframe="weekly" style="background: transparent; color: var(--text-secondary); border: none; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.05em;">Weekly</button>
+                            <button class="timeframe-btn" data-timeframe="monthly" style="background: transparent; color: var(--text-secondary); border: none; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.05em;">Monthly</button>
+                            <button class="timeframe-btn" data-timeframe="yearly" style="background: transparent; color: var(--text-secondary); border: none; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.05em;">1 Year</button>
+                        </div>
+                        <button class="btn-secondary" id="export-report-excel-btn" title="Download Report as Excel">
+                            <span>⬇️ Export Excel</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Streaks card grid -->
+                <div class="streak-box-container">
+                    <div class="glass-panel streak-card">
+                        <div class="streak-icon win-streak">🏆</div>
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Max Winning Streak</div>
+                            <div class="streak-value text-success" id="report-max-win-streak">0 trades</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div class="streak-icon loss-streak">⚠️</div>
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Max Drawdown Streak</div>
+                            <div class="streak-value text-danger" id="report-max-loss-streak">0 trades</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytical visual columns -->
+                <div class="reports-dashboard">
+                    <div class="glass-panel report-breakdown-card">
+                        <div class="chart-header">
+                            <span class="chart-title">Setup / Strategy Returns</span>
+                        </div>
+                        <div class="chart-container" style="min-height: 280px;">
+                            <canvas id="strategyAnalyticsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel report-breakdown-card">
+                        <div class="chart-header">
+                            <span class="chart-title">Mistake Profit Drawdown</span>
+                        </div>
+                        <div class="chart-container" style="min-height: 280px;">
+                            <canvas id="mistakeAnalyticsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Breakdown Tables -->
+                <div class="section-header">
+                    <h2 class="section-title">Strategy Win-Rates Breakdown</h2>
+                </div>
+                <div class="glass-panel trades-table-card" style="margin-bottom: 32px;">
+                    <table class="trades-table" id="strategy-breakdown-table">
+                        <thead>
+                            <tr>
+                                <th>Strategy Name</th>
+                                <th>Total Trades</th>
+                                <th>Win Rate</th>
+                                <th>Profit Factor</th>
+                                <th>Net PnL</th>
+                            </tr>
+                        </thead>
+                        <tbody id="strategy-breakdown-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-header">
+                    <h2 class="section-title">Psychology & Mistake Analytics</h2>
+                </div>
+                <div class="glass-panel trades-table-card">
+                    <table class="trades-table" id="mistake-breakdown-table">
+                        <thead>
+                            <tr>
+                                <th>Behavioral / Execution Mistake</th>
+                                <th>Occurrences</th>
+                                <th>Total Profit Lost</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mistake-breakdown-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section-header" style="margin-top: 32px;">
+                    <h2 class="section-title">Detailed Trade Report</h2>
+                </div>
+
+                <!-- Summary Metrics for the Report -->
+                <div class="streak-box-container" style="margin-bottom: 24px;">
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Total Trades</div>
+                            <div class="streak-value" id="report-view-total-trades">0</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Win Rate</div>
+                            <div class="streak-value text-primary" id="report-view-win-rate">0%</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Profitable Trades</div>
+                            <div class="streak-value text-success" id="report-view-winning-trades">0</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Losing Trades</div>
+                            <div class="streak-value text-danger" id="report-view-losing-trades">0</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Total Profit</div>
+                            <div class="streak-value text-success" id="report-view-total-profit">$0.00</div>
+                        </div>
+                    </div>
+                    <div class="glass-panel streak-card">
+                        <div>
+                            <div class="text-secondary" style="font-size: 13px;">Total Pips</div>
+                            <div class="streak-value" id="report-view-total-pips" style="color: #06b6d4;">0.0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Trade Logs Table -->
+                <div class="glass-panel trades-table-card" style="margin-bottom: 32px; overflow-x: auto;">
+                    <table class="trades-table" id="detailed-report-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Symbol</th>
+                                <th>Direction</th>
+                                <th>Entry</th>
+                                <th>Exit</th>
+                                <th>Quantity</th>
+                                <th>Fees</th>
+                                <th>Net PnL</th>
+                                <th>Pips</th>
+                                <th>Strategy</th>
+                                <th>Emotion</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailed-report-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- VIEW 4: USER SETTINGS & DATA CONTROLS -->
+            <!-- VIEW 6: TOP TRADERS LEADERBOARD -->
+            <section id="leaderboard-view" class="view-pane">
+                <div class="section-header">
+                    <h2 class="sec-title">Top Traders Leaderboard</h2>
+                    <p class="sec-subtitle">Global ranking based on Net Profit (PnL)</p>
+                </div>
+                
+                <div class="glass-panel" style="margin-top: 24px; padding: 24px;">
+                    <div style="overflow-x: auto;">
+                        <table class="trades-table" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); text-align: left; font-size: 13px;">
+                                    <th style="padding: 12px 8px; width: 60px;">Rank</th>
+                                    <th style="padding: 12px 8px;">Trader Name</th>
+                                    <th style="padding: 12px 8px; text-align: right;">Total Profit</th>
+                                    <th style="padding: 12px 8px; text-align: right;">Total Pips</th>
+                                    <th style="padding: 12px 8px; text-align: center;">Win Rate</th>
+                                    <th style="padding: 12px 8px; text-align: right;">Total Trades</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-tbody">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings-view" class="view-pane">
+                
+                <div class="glass-panel settings-section">
+                    <h2 class="settings-sec-title">Account Configuration</h2>
+                    
+                    <form id="settings-form">
+                        <div class="settings-grid">
+                            <div class="form-group">
+                                <label for="settings-username">Trader Username</label>
+                                <input type="text" id="settings-username" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="settings-capital">Starting Capital Balance</label>
+                                <input type="number" id="settings-capital" step="0.01" min="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="settings-currency">Preferred Currency</label>
+                                <select id="settings-currency">
+                                    <option value="USD">USD ($)</option>
+                                    <option value="INR">INR (₹)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="settings-risk">Maximum Risk Per Trade Rule (%)</label>
+                                <input type="number" id="settings-risk" step="0.1" min="0.1" max="100">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 24px; text-align: right;">
+                            <button type="submit" class="btn-primary">Save Settings</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="glass-panel settings-section">
+                    <h2 class="settings-sec-title">Risk Management Rules</h2>
+                    
+                    <div class="warning-panel">
+                        <span style="font-size: 20px;">🛡️</span>
+                        <div>
+                            <strong>Active Risk Mitigation Alerts:</strong>
+                            <p style="margin-top: 4px; color: var(--text-secondary); line-height: 1.4;">
+                                When logging a trade, the journal automatically checks your Stop Loss level against your Max Risk Rule (currently set to <span id="risk-rule-percent-display">2%</span> of your capital balance). If your calculated risk exceeds this rule, you will see a visual warning warning you of over-leveraging before saving the trade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel settings-section">
+                    <h2 class="settings-sec-title">Database Storage & Connection Engine</h2>
+                    <p class="text-secondary" style="margin-bottom: 20px; font-size: 14px; line-height: 1.4;">
+                        Your trading journal supports dual-mode hybrid storage: a local browser database (IndexedDB) for zero-config privacy, and a local physical SQLite database file (via a Node backend) for complete file persistence.
+                    </p>
+                    
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; margin-bottom: 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+                        <div>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">CURRENT ACTIVE DATABASE ENGINE</div>
+                            <div id="settings-db-status" style="font-size: 14px; font-family: monospace;">🔵 IndexedDB Browser Sandbox Active</div>
+                        </div>
+                        <div id="settings-sync-box" style="display: none;">
+                            <button class="btn-primary" id="settings-sync-btn" style="height: 38px; font-size: 12.5px;">Sync local to Server</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel settings-section">
+                    <h2 class="settings-sec-title">Backup & Data Portability</h2>
+                    <p class="text-secondary" style="margin-bottom: 20px; font-size: 14px; line-height: 1.4;">
+                        Your trade journal databases are stored locally in your browser's private sandbox storage. You can export a clean, portable backup JSON file at any time to transfer or preserve your records.
+                    </p>
+                    
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <button class="btn-secondary" id="export-json-btn">
+                            <span>⬇️ Export Journal (JSON)</span>
+                        </button>
+                        
+                        <button class="btn-secondary" id="trigger-import-btn">
+                            <span>⬆️ Import Journal (JSON)</span>
+                        </button>
+                        <input type="file" id="import-json-file" accept=".json" style="display: none;">
+                        
+                        <button class="btn-danger" id="clear-database-btn">
+                            <span>⚠️ Clear Entire Journal</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-panel settings-section" style="border: 1px solid rgba(255, 69, 58, 0.3);">
+                    <h2 class="settings-sec-title" style="color: var(--danger);">Danger Zone</h2>
+                    <p class="text-secondary" style="margin-bottom: 20px; font-size: 14px; line-height: 1.4;">
+                        Permanently delete your account and all associated data. This action is irreversible and will destroy your account, settings, and trade history across the system.
+                    </p>
+                    
+                    <div>
+                        <button class="btn-danger" id="delete-account-btn">
+                            <span>☠️ Permanently Delete Account</span>
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- VIEW 5: FOREX TECHNICAL REPORT & CALCULATOR COCKPIT -->
+            <section id="forex-view" class="view-pane">
+                
+                <div class="section-header-centered" style="margin-bottom: 32px;">
+                    <div class="hero-badge"><span>🎛️</span> Analytical Intelligence</div>
+                    <h1 class="features-sec-title">Forex Strategy Cockpit</h1>
+                    <p class="hero-description" style="margin: 0 auto; text-align: center; max-width: 700px;">
+                        Interactive Pip, Lot-Size Risk Matrix, and Risk-Reward (RR) simulator linked directly with the official Forex technical guidelines.
+                    </p>
+                </div>
+
+                <div class="forex-grid-layout">
+                    <!-- LEFT COLUMN: INTERACTIVE FOREX ENGINE CALCULATOR -->
+                    <div class="glass-panel forex-calculator-card" style="padding: 24px; position: relative;">
+                        <div class="kpi-glass-shimmer"></div>
+                        <h2 class="settings-sec-title" style="border-bottom: 1px dashed var(--border-color); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                            <span>🧮</span> Real-Time Simulator
+                        </h2>
+
+                        <!-- Direction LONG/SHORT -->
+                        <div class="form-group" style="margin-bottom: 18px;">
+                            <label>Order Telemetry</label>
+                            <div class="direction-toggle" style="height: 40px; margin-top: 6px;">
+                                <div class="forex-dir-btn active" id="forex-dir-long" data-dir="LONG" style="display: flex; align-items: center; justify-content: center; width: 50%; height: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: all 0.3s; background: var(--primary); color: white;">BUY (LONG)</div>
+                                <div class="forex-dir-btn" id="forex-dir-short" data-dir="SHORT" data-dir="SHORT" style="display: flex; align-items: center; justify-content: center; width: 50%; height: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: all 0.3s; color: var(--text-secondary);">SELL (SHORT)</div>
+                            </div>
+                        </div>
+
+                        <!-- Grid for inputs -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+                            <div class="form-group">
+                                <label for="forex-calc-category">Pair Category</label>
+                                <select id="forex-calc-category" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 10px; margin-top: 6px; outline: none; cursor: pointer;">
+                                    <option value="A">Major USD Pairs (EUR/USD, GBP/USD, etc.) [Pip Value: $10.00, Size: 0.0001]</option>
+                                    <option value="B">JPY Yen Pairs (USD/JPY, EUR/JPY, etc.) [Pip Value: ~$6.70, Size: 0.01]</option>
+                                    <option value="C">CHF Cross Pairs (USD/CHF, EUR/CHF, etc.) [Pip Value: ~$11.10, Size: 0.0001]</option>
+                                    <option value="D">CAD Cross Pairs (USD/CAD, EUR/CAD, etc.) [Pip Value: ~$7.30, Size: 0.0001]</option>
+                                    <option value="E">Euro Crosses (EUR/GBP) [Pip Value: ~$12.50, Size: 0.0001]</option>
+                                    <option value="F">XAU/USD Gold Spot [Pip Value: $10.00, Size: 0.10]</option>
+                                    <option value="G">USOIL WTI Crude [Pip Value: $10.00, Size: 0.01]</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="forex-calc-lots">Lot Size (Volume)</label>
+                                <input type="number" id="forex-calc-lots" step="0.01" min="0.01" value="1.00" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 12px; margin-top: 6px; outline: none;">
+                            </div>
+                        </div>
+
+                        <!-- Entry / Exit Row -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
+                            <div class="form-group">
+                                <label for="forex-calc-entry">Entry Price</label>
+                                <input type="number" id="forex-calc-entry" step="0.00001" value="1.08500" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 12px; margin-top: 6px; outline: none;">
+                            </div>
+                            <div class="form-group">
+                                <label for="forex-calc-exit">Exit Price</label>
+                                <input type="number" id="forex-calc-exit" step="0.00001" value="1.09120" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 12px; margin-top: 6px; outline: none;">
+                            </div>
+                        </div>
+
+                        <!-- SL / TP Row -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                            <div class="form-group">
+                                <label for="forex-calc-sl">Protective Stop Loss (SL)</label>
+                                <input type="number" id="forex-calc-sl" step="0.00001" value="1.08000" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 12px; margin-top: 6px; outline: none;" placeholder="Optional SL">
+                            </div>
+                            <div class="form-group">
+                                <label for="forex-calc-tp">Target Take Profit (TP)</label>
+                                <input type="number" id="forex-calc-tp" step="0.00001" value="1.09500" style="width: 100%; height: 42px; background: rgba(15,23,42,0.6); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-primary); padding: 0 12px; margin-top: 6px; outline: none;" placeholder="Optional TP">
+                            </div>
+                        </div>
+
+                        <!-- Calculator Dynamic Output dashboard -->
+                        <div class="forex-output-panel" style="background: rgba(8,12,20,0.5); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);">
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 12px;">
+                                <span class="text-secondary" style="font-size: 13px;">Price Difference:</span>
+                                <span id="forex-out-pips-label" class="trend-value pnl-green" style="font-weight: bold; font-family: monospace;">+62.0 Pips</span>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                                <div>
+                                    <div class="kpi-title" style="font-size: 11px; color: var(--text-secondary);">Calculated Move</div>
+                                    <div class="stat-number pnl-green" id="forex-out-pips" style="font-size: 20px; font-weight: bold; font-family: monospace;">62.0 Pips</div>
+                                </div>
+                                <div>
+                                    <div class="kpi-title" style="font-size: 11px; color: var(--text-secondary);">Projected Return</div>
+                                    <div class="stat-number pnl-green" id="forex-out-pnl" style="font-size: 20px; font-weight: bold; font-family: monospace;">+$620.00</div>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 12px;">
+                                <div>
+                                    <div class="kpi-title" style="font-size: 10px; color: var(--text-secondary); margin-bottom: 4px;">Risk (Stop Loss)</div>
+                                    <div style="font-size: 13px; font-weight: bold; font-family: monospace; color: var(--pink);" id="forex-out-sl-pips">50.0 Pips ($500.00)</div>
+                                </div>
+                                <div>
+                                    <div class="kpi-title" style="font-size: 10px; color: var(--text-secondary); margin-bottom: 4px;">Reward (Take Profit)</div>
+                                    <div style="font-size: 13px; font-weight: bold; font-family: monospace; color: var(--primary);" id="forex-out-tp-pips">100.0 Pips ($1,000.00)</div>
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+                                <div>
+                                    <div class="kpi-title" style="font-size: 10px; color: var(--text-secondary); margin-bottom: 4px;">Risk-Reward (RR)</div>
+                                    <div style="font-size: 15px; font-weight: bold; font-family: monospace; color: var(--violet);" id="forex-out-rr">1 : 2.00</div>
+                                </div>
+                                <div>
+                                    <div class="kpi-title" style="font-size: 10px; color: var(--text-secondary); margin-bottom: 4px;">Breakeven Win Rate</div>
+                                    <div style="font-size: 15px; font-weight: bold; font-family: monospace; color: var(--cyan);" id="forex-out-bewin">33.3%</div>
+                                </div>
+                            </div>
+
+                            <!-- Risk-Reward visualizer progress bar -->
+                            <div id="forex-rr-visualizer" style="margin-top: 16px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 9px; color: var(--text-secondary); margin-bottom: 4px;">
+                                    <span>RISK</span>
+                                    <span>REWARD</span>
+                                </div>
+                                <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; display: flex;">
+                                    <div id="forex-rr-visual-risk" style="background: var(--pink); width: 33.3%; transition: all 0.3s;"></div>
+                                    <div id="forex-rr-visual-reward" style="background: var(--primary); width: 66.7%; transition: all 0.3s;"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- LIVE POSITION VISUALIZER -->
+                            <div class="form-group" style="margin-top: 20px;">
+                                <label style="font-size: 12px; color: var(--cyan); letter-spacing: 0.05em;">LIVE POSITION VISUALIZER</label>
+                                <div style="position: relative; width: 100%; height: 220px; border-radius: 8px; background: rgba(8,12,20,0.4); border: 1px solid rgba(255,255,255,0.05); overflow: hidden; margin-top: 6px;">
+                                    <canvas id="forex-sim-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: FOREX TECHNICAL REPORT & COMMERCIAL GUIDE -->
+                    <div class="glass-panel forex-report-card" style="padding: 24px; position: relative;">
+                        <div class="kpi-glass-shimmer"></div>
+                        <h2 class="settings-sec-title" style="border-bottom: 1px dashed var(--border-color); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+                            <span>📖</span> Technical Specifications & Guidelines
+                        </h2>
+
+                        <!-- Interactive Tabs inside reports -->
+                        <div class="forex-tabs" style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <button class="forex-tab-btn active" data-tab="tab-pips">1. Pips & Pipettes</button>
+                            <button class="forex-tab-btn" data-tab="tab-categories">2. Pair Categories</button>
+                            <button class="forex-tab-btn" data-tab="tab-lots">3. Lot Matrix</button>
+                            <button class="forex-tab-btn" data-tab="tab-risk">4. Risk Rules</button>
+                            <button class="forex-tab-btn" data-tab="tab-live-chart">5. Live Advanced Chart</button>
+                        </div>
+
+                        <!-- Tab Content 1: Pips & Pipettes -->
+                        <div class="forex-tab-content active" id="tab-pips">
+                            <h3 style="color: var(--cyan); font-size: 16px; margin-bottom: 8px; font-weight: bold;">Section 1: Technical Definition of standard Pip & Pipette</h3>
+                            <p class="text-secondary" style="font-size: 13.5px; line-height: 1.6; margin-bottom: 16px;">
+                                In the foreign exchange market, currency movements are measured using <strong>Pips (Percentage in Point)</strong>. A pip represents the standard unit of price change. To enhance precision, modern financial brokerage servers track an additional decimal fractional element called a <strong>Pipette</strong>.
+                            </p>
+
+                            <div style="background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 8px; padding: 16px; margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 6px; font-size: 14px;">
+                                    <span style="color: var(--cyan);">Standard Equivalency:</span>
+                                    <span style="color: white; font-family: monospace;">1 Pip = 10 Pipettes</span>
+                                </div>
+                                <p style="font-size: 12px; color: var(--text-secondary); margin: 0; line-height: 1.4;">
+                                    <em>Note:</em> Pipette is the sub-unit. For example, in EUR/USD, a price difference from 1.08500 to 1.08510 equals a 1 Pip (10 Pipettes) movement.
+                                </p>
+                            </div>
+
+                            <h4 style="color: white; font-size: 14px; margin-bottom: 8px; font-weight: bold;">Bilingual Operational Context:</h4>
+                            <ul class="text-secondary" style="font-size: 13px; line-height: 1.6; padding-left: 20px; list-style-type: square; margin-bottom: 0;">
+                                <li>Forex market me price ki movement ko measure karne ke liye Standard Pip use kiya jata hai.</li>
+                                <li>Yahi currency exchange rate me hone wala sabse chota standard price move hai.</li>
+                                <li>Brokers accuracy badhane ke liye standard pips ke baad ek aur fractional digit display karte hain, jise Pipette kehte hain.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab Content 2: Pair Categories -->
+                        <div class="forex-tab-content" id="tab-categories" style="display: none;">
+                            <h3 style="color: var(--cyan); font-size: 16px; margin-bottom: 8px; font-weight: bold;">Section 2: Pair-Specific Pip Counting Methodology</h3>
+                            <p class="text-secondary" style="font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Because currency quotes differ structurally, they are divided into three standard categories to compute gains cleanly:
+                            </p>
+
+                            <!-- Accordion-like cards for Category A, B, C -->
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 16px;">
+                                    <strong style="color: var(--cyan); font-size: 13px; display: block; margin-bottom: 4px; font-weight: bold;">Category A: 4-Decimal / 5-Decimal Pairs (Majors & Minors)</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px;">Target: EUR/USD, GBP/USD, AUD/USD, USD/CAD, NZD/USD</span>
+                                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0; line-height: 1.4;">
+                                        The 4th decimal is the main pip. For example, BUY EUR/USD Entry 1.08500, Exit 1.09120 = <strong class="pnl-green">+62.0 Pips</strong>.
+                                    </p>
+                                </div>
+
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 16px;">
+                                    <strong style="color: var(--violet); font-size: 13px; display: block; margin-bottom: 4px; font-weight: bold;">Category B: Japanese Yen (JPY) Pairs (2-Decimal / 3-Decimal)</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px;">Target: USD/JPY, EUR/JPY, GBP/JPY, AUD/JPY</span>
+                                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0; line-height: 1.4;">
+                                        The Yen valuation uses the 2nd decimal for the standard pip. For example, BUY USD/JPY Entry 155.200, Exit 156.450 = <strong class="pnl-green">+125.0 Pips</strong>.
+                                    </p>
+                                </div>
+
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 12px 16px;">
+                                    <strong style="color: var(--primary); font-size: 13px; display: block; margin-bottom: 4px; font-weight: bold;">Category C: Commodities & Metals (Gold - XAU/USD)</strong>
+                                    <span style="font-size: 11px; color: var(--text-secondary); display: block; margin-bottom: 8px;">Target: Gold Spot</span>
+                                    <p style="font-size: 12px; color: var(--text-secondary); margin: 0; line-height: 1.4;">
+                                        Gold tracks standard pips at the 1st decimal (every $0.10 price difference equals 1 Pip). A full $1.00 move equals 10 Pips. For example, BUY entry $2350.00, Exit $2365.50 = <strong class="pnl-green">+155.0 Pips</strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 3: Lot Matrix -->
+                        <div class="forex-tab-content" id="tab-lots" style="display: none;">
+                            <h3 style="color: var(--cyan); font-size: 16px; margin-bottom: 8px; font-weight: bold;">Section 3: Lot Size Architecture & Per-Pip Values</h3>
+                            <p class="text-secondary" style="font-size: 13px; line-height: 1.5; margin-bottom: 16px;">
+                                Lot size describes transaction quantity. Pip dollar values are standard for accounts backed by USD as the capital asset:
+                            </p>
+
+                            <!-- Lot Matrix Table -->
+                            <div class="glass-panel trades-table-card" style="margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.05); transform: none !important;">
+                                <table class="trades-table" style="font-size: 11.5px; border-collapse: collapse; width: 100%;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                            <th style="padding: 8px 12px; text-align: left;">Designation</th>
+                                            <th style="padding: 8px 12px; text-align: left;">Volume Value</th>
+                                            <th style="padding: 8px 12px; text-align: left;">Base Equivalence</th>
+                                            <th style="padding: 8px 12px; text-align: left;">Per-Pip Value (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--cyan);">Standard Lot</td>
+                                            <td style="padding: 8px 12px;">1.00</td>
+                                            <td style="padding: 8px 12px;">100,000 units</td>
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--cyan); font-family: monospace;">$10.00</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.04);">
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--violet);">Mini Lot</td>
+                                            <td style="padding: 8px 12px;">0.10</td>
+                                            <td style="padding: 8px 12px;">10,000 units</td>
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--violet); font-family: monospace;">$1.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--primary);">Micro Lot</td>
+                                            <td style="padding: 8px 12px;">0.01</td>
+                                            <td style="padding: 8px 12px;">1,000 units</td>
+                                            <td style="padding: 8px 12px; font-weight: bold; color: var(--primary); font-family: monospace;">$0.10</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h4 style="color: white; font-size: 13.5px; margin-bottom: 6px; font-weight: bold;">Universal Valuation Formula:</h4>
+                            <div style="background: rgba(8,12,20,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; padding: 12px; font-family: 'Courier New', Courier, monospace; font-size: 12px; color: var(--cyan); text-align: center; margin-bottom: 12px;">
+                                Profit/Loss = Total Pips * Lot Size * Standard Pip Value ($10.00)
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 4: Risk Rules -->
+                        <div class="forex-tab-content" id="tab-risk" style="display: none;">
+                            <h3 style="color: var(--cyan); font-size: 16px; margin-bottom: 8px; font-weight: bold;">Section 4: Professional Risk Management Framework</h3>
+                            <p class="text-secondary" style="font-size: 13px; line-height: 1.5; margin-bottom: 14px;">
+                                Discipline separates quant models from gamblers. Follow the space-age rule parameters to preserve equity:
+                            </p>
+
+                            <div style="background: rgba(244,63,94,0.04); border: 1px solid rgba(244,63,94,0.12); border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                                <div style="font-weight: bold; color: var(--pink); font-size: 13.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                                    <span>🛡️</span> The 1% to 2% Risk Cap
+                                </div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0; line-height: 1.45;">
+                                    Never risk more than <strong>1% to 2%</strong> of your total capital balance on a single trade. If your account size is $10,000, your Stop Loss boundary should strictly enforce a maximum loss parameter of <strong>$100 to $200</strong>!
+                                </p>
+                            </div>
+
+                            <div style="background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.12); border-radius: 8px; padding: 14px; margin-bottom: 0;">
+                                <div style="font-weight: bold; color: var(--primary); font-size: 13.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                                    <span>📈</span> Fixed Risk-Reward (RR) Execution
+                                </div>
+                                <p style="font-size: 12.5px; color: var(--text-secondary); margin: 0; line-height: 1.45;">
+                                    Always enter market positions with structured Take Profit (TP) and Stop Loss (SL) triggers. Ensure your strategy metrics present a minimum of <strong>1:2 Risk-to-Reward</strong> (Reward should be at least double the risk). 
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 5: Live TradingView Chart -->
+                        <div class="forex-tab-content" id="tab-live-chart" style="display: none;">
+                            <h3 style="color: var(--cyan); font-size: 15px; margin-bottom: 14px; font-weight: bold; display: flex; align-items: center; justify-content: space-between;">
+                                <span>🛰️ Interactive Cockpit Radar Feed</span>
+                                <select class="live-chart-ticker-selector" id="forex-chart-ticker" style="padding: 4px 10px;">
+                                    <option value="EURUSD">EURUSD (Euro / USD)</option>
+                                    <option value="GBPUSD">GBPUSD (British Pound / USD)</option>
+                                    <option value="USDJPY">USDJPY (USD / Japanese Yen)</option>
+                                    <option value="XAUUSD">XAUUSD (Gold Spot)</option>
+                                    <option value="USOIL">USOIL (WTI Crude Oil)</option>
+                                </select>
+                            </h3>
+                            
+                            <div class="live-chart-viewport-wrapper" style="height: 520px;">
+                                <!-- Glowing Spinner loading indicator -->
+                                <div class="live-chart-loading-overlay" id="forex-chart-loader">
+                                    <div class="live-chart-spinner"></div>
+                                    <div class="live-chart-loading-text">CONNECTING LIVE ORBITAL COORDINATES...</div>
+                                </div>
+                                <!-- Embed placeholder for TradingView advanced iframe widget -->
+                                <div id="forex-tradingview-widget" style="width: 100%; height: 100%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- CURRENCY STRENGTH METER VIEW -->
+            <section id="csm-view" class="view-pane">
+                <div class="section-header">
+                    <h2 class="sec-title">Currency Strength Meter</h2>
+                    <p class="sec-subtitle">Real-time relative strength index for major global currencies</p>
+                </div>
+
+                <!-- FULL WIDTH COMPONENT: CURRENCY STRENGTH METER -->
+                <div class="glass-panel forex-csm-card" style="margin-top: 12px; padding: 24px; position: relative; overflow: hidden;">
+                    <div class="kpi-glass-shimmer"></div>
+                    <div class="chart-header" style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 12px;">
+                        <span class="chart-title" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: bold; color: var(--cyan);">
+                            <span class="pulse-dot" style="background: var(--cyan); box-shadow: 0 0 8px var(--cyan);"></span> Currency Strength Meter
+                        </span>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <button id="refresh-strength-btn" class="btn-secondary" style="padding: 4px 12px; font-size: 11px; border-radius: 20px; border: 1px solid var(--border-color);">Refresh</button>
+                            <select id="csm-timeframe" style="width: auto; background: rgba(15,23,42,0.8); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 8px; font-size: 12px; outline: none; cursor: pointer;">
+                                <option value="1M">1 Minute</option>
+                                <option value="5M">5 Minutes</option>
+                                <option value="15M" selected>15 Minutes</option>
+                                <option value="1H">1 Hour</option>
+                                <option value="4H">4 Hours</option>
+                                <option value="1D">1 Day</option>
+                            </select>
+                            <span style="font-size: 11px; color: var(--text-secondary); font-family: monospace; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px;">LIVE ALGORITHM FEED</span>
+                        </div>
+                    </div>
+                    
+                    <div class="strength-meter-grid" id="currency-strength-container" style="padding: 12px 0;">
+                        <!-- JS populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- NEW: CURRENCY PAIR ANALYSIS DATA -->
+                <div class="glass-panel" style="margin-top: 24px; padding: 24px;">
+                    <div class="chart-header" style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h3 style="color: var(--cyan); font-size: 15px; margin: 0; display: flex; align-items: center; gap: 8px;">
+                                <span>📊</span> Algorithmic Pair Cross-Data
+                            </h3>
+                            <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">Derived trading signals based on real-time absolute currency strength divergence.</p>
+                        </div>
+                        <select id="csm-data-timeframe" style="width: auto; background: rgba(15,23,42,0.8); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 8px; font-size: 12px; outline: none; cursor: pointer;">
+                            <option value="1M">1 Minute</option>
+                            <option value="5M">5 Minutes</option>
+                            <option value="15M" selected>15 Minutes</option>
+                            <option value="1H">1 Hour</option>
+                            <option value="4H">4 Hours</option>
+                            <option value="1D">1 Day</option>
+                        </select>
+                    </div>
+
+                    <div style="overflow-x: auto;">
+                        <table class="trades-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <thead>
+                                <tr style="border-bottom: 1px dashed rgba(255,255,255,0.1); color: var(--text-secondary); text-align: left;">
+                                    <th style="padding: 12px 8px;">Currency Pair</th>
+                                    <th style="padding: 12px 8px;">Base Strength</th>
+                                    <th style="padding: 12px 8px;">Quote Strength</th>
+                                    <th style="padding: 12px 8px;">Delta (Divergence)</th>
+                                    <th style="padding: 12px 8px;">Algorithm Signal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="csm-data-table-body">
+                                <!-- JS populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL OVERLAY: ADVANCED TRADE LOGGER & EDITOR -->
+    <div class="modal-overlay" id="trade-modal">
+        <div class="glass-panel modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title-label">Log Advanced Trade</h2>
+                <button class="close-btn" id="close-modal-btn">×</button>
+            </div>
+            
+            <form id="trade-form">
+                <!-- Keep track if editing -->
+                <input type="hidden" id="edit-trade-id">
+                
+                <div class="form-grid">
+                    
+                    <!-- Direction: BUY/LONG or SELL/SHORT -->
+                    <div class="form-group col-span-2">
+                        <label>Execution Direction</label>
+                        <div class="direction-toggle">
+                            <div class="direction-btn dir-long active" id="direction-long-btn">BUY / LONG</div>
+                            <div class="direction-btn dir-short" id="direction-short-btn">SELL / SHORT</div>
+                        </div>
+                        <input type="hidden" id="trade-direction" value="LONG">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-symbol">Asset / Symbol</label>
+                        <input type="text" id="trade-symbol" list="symbols-list" placeholder="e.g. BTCUSD, AAPL, NIFTY" required autocomplete="off">
+                        <datalist id="symbols-list">
+                            <option value="BTCUSD"></option>
+                            <option value="ETHUSD"></option>
+                            <option value="SOLUSD"></option>
+                            <option value="EURUSD"></option>
+                            <option value="GBPUSD"></option>
+                            <option value="USDJPY"></option>
+                            <option value="XAUUSD"></option>
+                            <option value="USOIL"></option>
+                            <option value="US30"></option>
+                            <option value="NAS100"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-date">Execution Timestamp</label>
+                        <input type="datetime-local" id="trade-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-entry">Entry Price</label>
+                        <input type="number" id="trade-entry" step="0.00001" min="0.00001" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-exit">Exit Price</label>
+                        <input type="number" id="trade-exit" step="0.00001" min="0.00001" placeholder="0.00" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-quantity">Position Quantity / Size</label>
+                        <input type="number" id="trade-quantity" step="0.00001" min="0.00001" placeholder="e.g. Lots, Shares, Coins" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-fees">Broker Commissions & Fees</label>
+                        <input type="number" id="trade-fees" step="0.01" min="0" value="0.00" placeholder="0.00">
+                    </div>
+
+                    <!-- Risk variables -->
+                    <div class="form-group">
+                        <label for="trade-sl">Stop Loss level (SL)</label>
+                        <input type="number" id="trade-sl" step="0.00001" min="0" placeholder="Optional protective SL">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trade-tp">Take Profit target (TP)</label>
+                        <input type="number" id="trade-tp" step="0.00001" min="0" placeholder="Optional target TP">
+                    </div>
+
+                    <div class="form-group col-span-2" id="forex-telemetry-form" style="display: none; background: rgba(16, 185, 129, 0.05); border: 1px dashed var(--primary); border-radius: 8px; padding: 12px; margin-bottom: 12px; flex-direction: column; gap: 4px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <strong style="color: var(--primary); font-size: 13px; display: flex; align-items: center; gap: 6px;">
+                                <span>🛸</span> Forex Pip & Lot Telemetry
+                            </strong>
+                            <span id="forex-telemetry-type" style="font-size: 11px; color: var(--text-secondary); background: rgba(255,255,255,0.05); padding: 2px 6px; border-radius: 4px;">Major USD Pair</span>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; font-size: 12.5px;">
+                            <div>
+                                <span class="text-secondary">Pips Movement: </span>
+                                <strong id="forex-telemetry-pips" style="font-family: monospace; color: white;">+0.0 pips</strong>
+                            </div>
+                            <div>
+                                <span class="text-secondary">Calculated P&L: </span>
+                                <strong id="forex-telemetry-pnl" class="pnl-neutral" style="font-family: monospace;">$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Chart Preview in Modal -->
+                    <div class="form-group col-span-2" id="modal-chart-preview-group" style="display: none; margin-top: 8px;">
+                        <label>Visual Level Execution Preview</label>
+                        <div class="modal-chart-container" style="position: relative; width: 100%; height: 200px; border-radius: 8px; background: rgba(8, 12, 20, 0.6); border: 1px solid var(--border-color); overflow: hidden; margin-top: 6px;">
+                            <canvas id="modal-trade-preview-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-span-2">
+                        <div id="risk-warning-form" class="warning-panel" style="margin-bottom: 0; display: none;">
+                            <span style="font-size: 16px;">⚠️</span>
+                            <div>
+                                <strong>High Risk Warning:</strong>
+                                <p style="margin-top: 2px; color: var(--text-secondary); font-size: 12px;" id="risk-warning-form-text">
+                                    Your Protective SL represents a loss of $500.00 (5% of Capital), exceeding your maximum risk rule (2%).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setup Strategy Tags -->
+                    <div class="form-group">
+                        <label for="trade-strategy">Trading Strategy / Setup Setup</label>
+                        <input type="text" id="trade-strategy" list="strategy-list" placeholder="e.g. Support/Resistance, Breakout" autocomplete="off">
+                        <datalist id="strategy-list">
+                            <option value="Support/Resistance"></option>
+                            <option value="Breakout"></option>
+                            <option value="Retest / Pullback"></option>
+                            <option value="Moving Average Crossover"></option>
+                            <option value="Trendline Bounce"></option>
+                            <option value="FIB Retracement"></option>
+                            <option value="Other / No Setup"></option>
+                        </datalist>
+                    </div>
+
+                    <!-- Emotional state selection -->
+                    <div class="form-group">
+                        <label>Emotional state during execution</label>
+                        <div class="pill-container" id="emotion-pill-container">
+                            <div class="pill-item active" data-value="Disciplined">Disciplined</div>
+                            <div class="pill-item" data-value="Anxious">Anxious</div>
+                            <div class="pill-item" data-value="Greedy">Greedy</div>
+                            <div class="pill-item" data-value="Fearful">Fearful</div>
+                            <div class="pill-item" data-value="Patient">Patient</div>
+                            <div class="pill-item" data-value="FOMO">FOMO</div>
+                            <div class="pill-item" data-value="Neutral">Neutral</div>
+                        </div>
+                        <input type="hidden" id="trade-emotion" value="Disciplined">
+                    </div>
+
+                    <!-- Execution psychological errors -->
+                    <div class="form-group col-span-2">
+                        <label>Execution / Psychological Mistakes</label>
+                        <div class="pill-container" id="mistake-pill-container">
+                            <div class="pill-item active" data-value="">None (Perfect Execution)</div>
+                            <div class="pill-item" data-value="FOMO Entry">FOMO Entry</div>
+                            <div class="pill-item" data-value="Revenge Trading">Revenge Trading</div>
+                            <div class="pill-item" data-value="Over-Leveraging">Over-Leveraging</div>
+                            <div class="pill-item" data-value="Early Exit">Early Exit</div>
+                            <div class="pill-item" data-value="Chasing Price">Chasing Price</div>
+                            <div class="pill-item" data-value="Moved Stop Loss">Moved Stop Loss</div>
+                        </div>
+                        <input type="hidden" id="trade-mistake" value="">
+                    </div>
+
+                    <div class="form-group col-span-2">
+                        <label for="trade-notes">Psychological Notes & Trade Review</label>
+                        <textarea id="trade-notes" rows="3" placeholder="Write details about the market structure, why you took the trade, how you managed it, and lessons learned."></textarea>
+                    </div>
+
+                    <!-- File Drag and Drop attachment or screenshot URL -->
+                    <div class="form-group col-span-2">
+                        <label>Attach Chart Screenshot / Technical Setup</label>
+                        <div class="upload-area" id="drop-zone">
+                            <div class="upload-icon">📷</div>
+                            <p>Drag & Drop a local chart image here, or <strong>click to browse files</strong></p>
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">PNG, JPG, or WEBP. Max 2MB (saved securely in local memory).</p>
+                        </div>
+                        <!-- Standard input behind click -->
+                        <input type="file" id="chart-file-input" accept="image/*" style="display: none;">
+                        
+                        <!-- Screenshot preview pane -->
+                        <div class="preview-container" id="screenshot-preview-box">
+                            <button type="button" class="remove-img-btn" id="remove-screenshot-btn">×</button>
+                            <img src="" alt="Technical setup preview" class="preview-img" id="screenshot-preview-img">
+                        </div>
+                        <input type="hidden" id="trade-screenshot" value="">
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 32px; display: flex; justify-content: flex-end; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                    <button type="button" class="btn-secondary" id="cancel-form-btn">Cancel</button>
+                    <button type="submit" class="btn-primary" id="save-trade-submit-btn">Save Trade Log</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION SYSTEM TOASTS -->
+    <div class="toast-msg toast-success" id="toast-message">Trade saved successfully.</div>
+
+    <!-- FLOATING LIVE CHAT & ACTIVE TRADE SIGNAL LOGGING TERMINAL -->
+    <button class="floating-terminal-trigger" id="terminal-trigger-btn">
+        <span>💬</span>
+        <span>SIGNAL TERMINAL</span>
+        <span class="badge" id="terminal-badge" style="display: none;">0</span>
+    </button>
+
+    <div class="floating-terminal-panel" id="terminal-panel">
+        <!-- Header -->
+        <div class="terminal-header">
+            <div class="terminal-title">
+                <span class="pulse-dot"></span>
+                <span>ASCEND CORE TERMINAL</span>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <button class="terminal-max-btn" id="terminal-max-btn" type="button" title="Maximize Terminal" style="background:none; border:none; color:var(--text-secondary); font-size:15px; cursor:pointer; margin-right:12px; transition:color 0.2s;">⛶</button>
+                <button class="terminal-close-btn" id="terminal-close-btn" style="background:none; border:none; color:var(--text-secondary); font-size:16px; cursor:pointer;">×</button>
+            </div>
+        </div>
+        
+        <!-- Mode selection -->
+        <div class="terminal-modes">
+            <button class="terminal-mode-btn active" data-mode="community">🛰️ Live Room</button>
+            <button class="terminal-mode-btn" data-mode="ai">🤖 AI Buddy</button>
+            <button class="terminal-mode-btn" data-mode="support">📡 Help Desk</button>
+        </div>
+        
+        <!-- Messages Thread -->
+        <div class="terminal-body" id="terminal-messages-container">
+            <!-- Dynamic chats mapped by JS -->
+        </div>
+        
+        <!-- Form CLI Input Footer -->
+        <form class="terminal-footer" id="terminal-form" autocomplete="off">
+            <input type="text" class="terminal-input" id="terminal-input" placeholder="Type CLI command or chat..." required>
+            <button type="submit" class="terminal-send-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <!-- Visual feedback fullscreen flash glow overlays -->
+    <div id="terminal-flash-overlay"></div>
+
+    <!-- Application Script Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="js/storage.js?v=1.0.2"></script>
+    <script src="js/charts.js?v=1.0.2"></script>
+    <script src="js/three-scene.js?v=1.0.2"></script>
+    <script src="js/live-charts.js?v=1.0.2"></script>
+    <script src="js/signal-terminal.js?v=1.0.2"></script>
+    <script src="js/app.js?v=1.0.2"></script>
+
+</body>
+</html>
