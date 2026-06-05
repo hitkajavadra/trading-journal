@@ -1091,18 +1091,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Get local IndexedDB data
-                const username = window.db.getActiveUser();
                 const allAccounts = await window.db.idb.getAll('accounts');
-                const userAccount = allAccounts.find(a => a.username === username);
                 const allTrades = await window.db.idb.getAll('trades');
-                const userTrades = allTrades.filter(t => t.username === username);
-                const userSettings = await window.db.idb.get('settings', username);
+                const allSettings = await window.db.idb.getAll('settings');
                 
                 // Send payload
                 const res = await fetch(window.API_BASE + '/api/sync', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-user': username },
-                    body: JSON.stringify({ account: userAccount, trades: userTrades, settings: userSettings })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ accounts: allAccounts, trades: allTrades, settings: allSettings })
                 });
                 
                 if (res.ok) {

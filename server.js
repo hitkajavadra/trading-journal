@@ -476,17 +476,13 @@ app.get('/api/leaderboard', async (req, res) => {
 
 // 11. Sync: Remote upload of all offline trades/settings
 app.post('/api/sync', async (req, res) => {
-    const username = req.headers['x-user'];
-    const { account, trades, settings } = req.body;
-    if (!username) {
-        return res.status(400).json({ error: 'Header X-User is required.' });
-    }
+    const { accounts, trades, settings } = req.body;
     
     try {
         const db = await getDb();
         
-        if (account) {
-            await db.run(`
+        if (accounts && Array.isArray(accounts)) {
+            const stmt = await db.prepare(`
                 INSERT INTO accounts (username, email, password, initialCapital, currency)
                 VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT(username) DO UPDATE SET
@@ -494,17 +490,21 @@ app.post('/api/sync', async (req, res) => {
                     password=excluded.password,
                     initialCapital=excluded.initialCapital,
                     currency=excluded.currency
-            `, [
-                account.username,
-                account.email ? account.email.trim().toLowerCase() : '',
-                account.password || '',
-                account.initialCapital || 0,
-                account.currency || 'USD'
-            ]);
+            `);
+            for (const acc of accounts) {
+                await stmt.run([
+                    acc.username,
+                    acc.email ? acc.email.trim().toLowerCase() : '',
+                    acc.password || '',
+                    acc.initialCapital || 0,
+                    acc.currency || 'USD'
+                ]);
+            }
+            await stmt.finalize();
         }
         
-        if (settings) {
-            await db.run(`
+        if (settings && Array.isArray(settings)) {
+            const stmt = await db.prepare(`
                 INSERT INTO settings (username, initialCapital, currency, maxRiskPerTrade, theme)
                 VALUES (?, ?, ?, ?, ?)
                 ON CONFLICT(username) DO UPDATE SET
@@ -512,13 +512,17 @@ app.post('/api/sync', async (req, res) => {
                     currency=excluded.currency,
                     maxRiskPerTrade=excluded.maxRiskPerTrade,
                     theme=excluded.theme
-            `, [
-                username, 
-                settings.initialCapital !== undefined ? settings.initialCapital : 10000,
-                settings.currency || 'USD',
-                settings.maxRiskPerTrade !== undefined ? settings.maxRiskPerTrade : 2.0,
-                settings.theme || 'dark'
-            ]);
+            `);
+            for (const s of settings) {
+                await stmt.run([
+                    s.username, 
+                    s.initialCapital !== undefined ? s.initialCapital : 10000,
+                    s.currency || 'USD',
+                    s.maxRiskPerTrade !== undefined ? s.maxRiskPerTrade : 2.0,
+                    s.theme || 'dark'
+                ]);
+            }
+            await stmt.finalize();
         }
         
         if (trades && Array.isArray(trades)) {
