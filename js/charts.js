@@ -266,7 +266,7 @@ class TradingJournalCharts {
                 labels: labels,
                 datasets: [{
                     data: absLosses,
-                    backgroundColor: backgroundColors,
+                    backgroundColor: palette,
                     borderWidth: 2,
                     borderColor: colors.tooltipBg
                 }]

@@ -309,15 +309,18 @@ class TradingJournalDB {
                 }
             }
             
-            // IndexedDB fallback search by email
+            // IndexedDB fallback search by email or username
             const allAccounts = await this.idb.getAll('accounts');
-            const user = allAccounts.find(a => a.email && a.email.toLowerCase() === eTrim);
+            const user = allAccounts.find(a => 
+                (a.email && a.email.toLowerCase() === eTrim) ||
+                (a.username && a.username.toLowerCase() === eTrim)
+            );
             
             if (user && user.password === password) {
                 localStorage.setItem(this.STORAGE_KEY_SESSION, user.username);
                 return { success: true, username: user.username };
             }
-            return { success: false, message: 'Invalid email or password.' };
+            return { success: false, message: 'Invalid credentials.' };
         } catch(e) {
             console.error("Login error", e);
             return { success: false, message: 'An unexpected error occurred during login.' };
