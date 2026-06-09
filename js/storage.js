@@ -114,7 +114,7 @@ class TradingJournalDB {
     async checkServerStatus() {
         try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 800);
+            const timeoutId = setTimeout(() => controller.abort(), 5000);
             
             const response = await fetch(window.API_BASE + '/api/status', {
                 method: 'GET',
