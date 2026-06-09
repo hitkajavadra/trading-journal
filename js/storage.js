@@ -1,4 +1,4 @@
-window.API_BASE = (window.location.protocol === 'file:') ? 'http://localhost:3000' : '';
+window.API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') ? 'http://localhost:3000' : '';
 /**
  * Trading Journal Data & Math Engine
  * Handles local database storage, statistics calculation, and trade operations.
